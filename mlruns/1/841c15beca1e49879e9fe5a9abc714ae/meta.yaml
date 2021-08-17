@@ -1,0 +1,15 @@
+artifact_uri: file:///home/clairesophie/code/csseries/TaxiFareModel/mlruns/1/841c15beca1e49879e9fe5a9abc714ae/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+name: ''
+run_id: 841c15beca1e49879e9fe5a9abc714ae
+run_uuid: 841c15beca1e49879e9fe5a9abc714ae
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1629207498406
+status: 1
+tags: []
+user_id: unknown
