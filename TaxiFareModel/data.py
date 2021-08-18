@@ -1,12 +1,37 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split 
 
-AWS_BUCKET_PATH = "s3://wagon-public-datasets/taxi-fare-train.csv"
+BUCKET_NAME = 'wagon-data-674-series'
+
+##### Data  - - - - - - - - - - - - - - - - - - - - - - - -
+
+# train data file location
+# /!\ here you need to decide if you are going to train using the provided and uploaded data/train_1k.csv sample file
+# or if you want to use the full dataset (you need need to upload it first of course)
+BUCKET_TRAIN_DATA_PATH = 'data/train_1k.csv'
+
+##### Training  - - - - - - - - - - - - - - - - - - - - - -
+
+# not required here
+
+##### Model - - - - - - - - - - - - - - - - - - - - - - - -
+
+# model folder name (will contain the folders for all trained model versions)
+MODEL_NAME = 'taxifare'
+
+# model version folder name (where the trained model.joblib file will be stored)
+MODEL_VERSION = 'v1'
+
+### GCP AI Platform - - - - - - - - - - - - - - - - - - - -
+
+# not required here
+
+### - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
-def get_data(nrows=10_000):
-    '''returns a DataFrame with nrows from s3 bucket'''
-    df = pd.read_csv(AWS_BUCKET_PATH, nrows=nrows)
+def get_data():
+    """method to get the training data (or a portion of it) from google cloud bucket"""
+    df = pd.read_csv(f"gs://{BUCKET_NAME}/{BUCKET_TRAIN_DATA_PATH}", nrows=1000)
     return df
 
 
@@ -36,3 +61,33 @@ def holdout(df):
 
 if __name__ == '__main__':
     df = get_data()
+
+BUCKET_NAME = 'wagon-data-674-series'
+
+##### Data  - - - - - - - - - - - - - - - - - - - - - - - -
+
+# train data file location
+# /!\ here you need to decide if you are going to train using the provided and uploaded data/train_1k.csv sample file
+# or if you want to use the full dataset (you need need to upload it first of course)
+BUCKET_TRAIN_DATA_PATH = 'data/train_1k.csv'
+
+##### Training  - - - - - - - - - - - - - - - - - - - - - -
+
+# not required here
+
+##### Model - - - - - - - - - - - - - - - - - - - - - - - -
+
+# model folder name (will contain the folders for all trained model versions)
+MODEL_NAME = 'taxifare'
+
+# model version folder name (where the trained model.joblib file will be stored)
+MODEL_VERSION = 'v1'
+
+### GCP AI Platform - - - - - - - - - - - - - - - - - - - -
+
+# not required here
+
+### - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+

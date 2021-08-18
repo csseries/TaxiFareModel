@@ -11,6 +11,7 @@ import joblib
 
 MLFLOW_URI = "https://mlflow.lewagon.co/"
 EXPERIMENT_NAME = "[DE][MUC][csseries] linear + random forest 2.0"
+STORAGE_LOCATION = 'models/simpletaxifare/model.joblib'
 
 class Trainer():
     
@@ -46,10 +47,26 @@ class Trainer():
         
         return rmse
     
-    def save_model(self):
-        """ Save the trained model into a model.joblib file """
-        pass
+    def upload_model_to_gcp():
+
+        client = storage.Client()
+        bucket = client.bucket(BUCKET_NAME)
+        blob = bucket.blob(STORAGE_LOCATION)
+        blob.upload_from_filename('model.joblib')
     
+    def save_model(reg):
+        """method that saves the model into a .joblib file and uploads it on Google Storage /models folder
+        HINTS : use joblib library and google-cloud-storage"""
+
+        # saving the trained model to disk is mandatory to then beeing able to upload it to storage
+        # Implement here
+        joblib.dump(reg, 'model.joblib')
+        print("saved model.joblib locally")
+
+        # Implement here
+        upload_model_to_gcp()
+        print(f"uploaded model.joblib to gcp cloud storage under \n => {STORAGE_LOCATION}")
+
     def save_pipeline(self):
         joblib.dump(self.pipeline, 'pipeline.joblib')
     
